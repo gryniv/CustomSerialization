@@ -13,8 +13,8 @@ public class Application {
         list.add("Ihor");
         list.add("Gryniv!");
         ByteSerialization<LinkedList<String>> kk = new ByteSerialization<>();
-        byte[] serialize = kk.serialize(list);
-        LinkedList<String> linkedList = kk.deserializer(serialize);
+        byte[] serialize = kk.byteSerialize(list);
+        LinkedList<String> linkedList = kk.byteDeserializer(serialize);
         LOG.info("Hi, my name {} {} this is my Serialization to byte implementation.",
                 linkedList.getFirst(), linkedList.getLast());
     }

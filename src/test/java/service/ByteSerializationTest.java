@@ -28,31 +28,31 @@ class ByteSerializationTest {
 
     @Test
     void shouldSerializeIntegerArrayToByteArray() {
-        byte[] intArrayInBytes = intArraySerialization.serialize(integers);
-        Integer[] bytesToIntArray = intArraySerialization.deserializer(intArrayInBytes);
+        byte[] intArrayInBytes = intArraySerialization.byteSerialize(integers);
+        Integer[] bytesToIntArray = intArraySerialization.byteDeserializer(intArrayInBytes);
         assertArrayEquals(bytesToIntArray, integers);
     }
 
     @Test
     void shouldSerializeStringArrayToByteArray() {
-        byte[] stringArrayInBytes = stringArraySerialization.serialize(strings);
-        String[] intArray = stringArraySerialization.deserializer(stringArrayInBytes);
+        byte[] stringArrayInBytes = stringArraySerialization.byteSerialize(strings);
+        String[] intArray = stringArraySerialization.byteDeserializer(stringArrayInBytes);
         assertArrayEquals(intArray, strings);
     }
 
     @Test
     void shouldSerializeIntToByteArray() {
         int integer = 1;
-        byte[] intInBytes = intSerialization.serialize(integer);
-        int integerDeserialized = intSerialization.deserializer(intInBytes);
+        byte[] intInBytes = intSerialization.byteSerialize(integer);
+        int integerDeserialized = intSerialization.byteDeserializer(intInBytes);
         assertEquals(integerDeserialized, 1);
     }
 
     @Test
     void shouldSerializeStringToByteArray() {
         String string = "Hello world!";
-        byte[] stringInBytes = stringSerialization.serialize(string);
-        String stringDeserialized = stringSerialization.deserializer(stringInBytes);
+        byte[] stringInBytes = stringSerialization.byteSerialize(string);
+        String stringDeserialized = stringSerialization.byteDeserializer(stringInBytes);
         assertEquals(stringDeserialized, "Hello world!");
     }
 
@@ -61,8 +61,8 @@ class ByteSerializationTest {
         User user = new User();
         user.setName("Ihor");
         user.setLastName("Gryniv");
-        byte[] userInBytes = userSerialization.serialize(user);
-        User userDeserialized = userSerialization.deserializer(userInBytes);
+        byte[] userInBytes = userSerialization.byteSerialize(user);
+        User userDeserialized = userSerialization.byteDeserializer(userInBytes);
         assertEquals(userDeserialized.getName(), "Ihor");
         assertEquals(userDeserialized.getLastName(), "Gryniv");
     }

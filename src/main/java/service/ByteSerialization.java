@@ -1,11 +1,15 @@
 package service;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ObjectInputStream;
 
-public class ByteSerialization<T> implements Serialization<T> {
+public class ByteSerialization<T> {
 
-    @Override
-    public byte[] serialize(T t) {
+    public byte[] byteSerialize(T t) {
         byte[] result = null;
         ByteArrayOutputStream stream = null;
         try {
@@ -27,8 +31,7 @@ public class ByteSerialization<T> implements Serialization<T> {
         return result;
     }
 
-    @Override
-    public T deserializer(byte[] array) {
+    public T byteDeserializer(byte[] array) {
         InputStream stream = null;
         try {
             stream = new ByteArrayInputStream(array);
@@ -36,7 +39,7 @@ public class ByteSerialization<T> implements Serialization<T> {
             T t = (T) o.readObject();
             return t;
         } catch (IOException | ClassNotFoundException e) {
-            System.err.println(e);
+           e.printStackTrace();
         } finally {
             try {
                 if (stream != null) {
